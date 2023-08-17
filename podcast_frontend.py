@@ -40,7 +40,7 @@ def main():
             border: 2px solid #8e44ad !important;
         }
     </style>
-""", unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
 
     st.title("Newsletter Dashboard")
 
