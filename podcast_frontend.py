@@ -6,41 +6,41 @@ import os
 def main():
     # CSS Styles
     st.markdown("""
-        <style>
-            body {
-                background: linear-gradient(45deg, #f3ec78, #af4261);
-                font-family: 'Arial', sans-serif;
-            }
-            h1, h2, h3 {
-                color: #ffffff;
-            }
-            .stButton>button {
-                background-color: #8e44ad;
-                color: white;
-                border: none;
-                border-radius: 20px;
-                padding: 10px 25px;
-                font-size: 1em;
-                box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
-            }
-            .stButton>button:hover {
-                background-color: #682773;
-            }
-            .stMarkdown p {
-                margin-bottom: 15px;
-                color: #ffffff;
-            }
-            .stSidebar {
-                background-color: #ffffff;
-                border-radius: 0 15px 15px 0;
-            }
-            .stTextInput input[type="text"] {
-                padding: 10px 15px;
-                border-radius: 15px;
-                border: 2px solid #8e44ad;
-            }
-        </style>
-    """, unsafe_allow_html=True)
+    <style>
+        body {
+            background: linear-gradient(45deg, #f3ec78, #af4261) !important;
+            font-family: 'Arial', sans-serif !important;
+        }
+        h1, h2, h3 {
+            color: #ffffff !important;
+        }
+        .stButton>button {
+            background-color: #8e44ad !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 20px !important;
+            padding: 10px 25px !important;
+            font-size: 1em !important;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2) !important;
+        }
+        .stButton>button:hover {
+            background-color: #682773 !important;
+        }
+        .stMarkdown p {
+            margin-bottom: 15px !important;
+            color: #ffffff !important;
+        }
+        .stSidebar .sidebar-content {
+            background-color: #ffffff !important;
+            border-radius: 0 15px 15px 0 !important;
+        }
+        .stTextInput input[type="text"] {
+            padding: 10px 15px !important;
+            border-radius: 15px !important;
+            border: 2px solid #8e44ad !important;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
     st.title("Newsletter Dashboard")
 
