@@ -40,15 +40,15 @@ def main():
 
         # Display the podcast summary and the cover image in a side-by-side layout
         col1, col2 = st.columns([7, 3])
+
+        # Use regex to remove the guest details from the podcast_summary
+        cleaned_summary = re.sub(r'GUEST NAME: .*?GUEST TITLE: .*?\n\n', '', podcast_info['podcast_summary'])
+
+        # Display the podcast summary and the cover image in a side-by-side layout
+        col1, col2 = st.columns([7, 3])
         with col1:
             st.subheader("Podcast Episode Summary")
-            
-            # Use regex to split the podcast_summary based on the pattern
-            summary_parts = re.split(r'.*GUEST TITLE: [A-Za-z]+', podcast_info['podcast_summary'], maxsplit=1)
-            if len(summary_parts) > 1:
-                st.write(summary_parts[1])
-            else:
-                st.write(podcast_info['podcast_summary'])  # If there's no split, just display the entire summary
+            st.write(cleaned_summary)  # Use the cleaned summary
         
         with col2:
             st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
