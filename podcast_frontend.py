@@ -47,7 +47,6 @@ def main():
         print(cleaned_summary)
 
         # Display the podcast summary and the cover image in a side-by-side layout
-        col1, col2 = st.columns([7, 3])
         with col1:
             st.subheader("Podcast Episode Summary")
             st.write(cleaned_summary)  # Use the cleaned summary
@@ -103,7 +102,8 @@ def display_podcast_info(podcast_info):
     # Display the podcast guest and their details in a side-by-side layout
     header_text = "Podcast Guest" if podcast_info['podcast_details']['episode_title'] != 'Host' else "Podcast Host"
     details_header_text = header_text + " Details"
-    
+
+    col1, col2 = st.columns([7, 3])
     with col3:
         st.subheader(header_text)
         st.write(podcast_info['podcast_guest']['name'])
