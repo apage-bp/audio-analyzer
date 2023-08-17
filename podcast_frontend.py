@@ -84,7 +84,11 @@ def display_podcast_info(podcast_info):
 
     # Use regex to remove the guest details from the podcast_summary
     print(podcast_info)
-    cleaned_summary = re.sub(r'GUEST NAME: .*\nGUEST ORGANIZATION: .*\nGUEST TITLE: .*\n\n', '', podcast_info['podcast_summary'], flags=re.DOTALL)
+    match = re.search(r'GUEST TITLE: .*?\n\n(.*)', podcast_info['podcast_summary'], flags=re.DOTALL)
+    if match:
+        cleaned_summary = match.group(1)
+    else:
+        cleaned_summary = podcast_info['podcast_summary']
     print("cleansed: "+cleaned_summary)
     
     # Display the podcast summary and the cover image in a side-by-side layout
