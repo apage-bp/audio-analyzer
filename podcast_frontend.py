@@ -103,7 +103,7 @@ def display_podcast_info(podcast_info):
     header_text = "Podcast Guest" if podcast_info['podcast_details']['episode_title'] != 'Host' else "Podcast Host"
     details_header_text = header_text + " Details"
 
-    col1, col2 = st.columns([7, 3])
+    col3, col4 = st.columns([3, 7])
     with col3:
         st.subheader(header_text)
         st.write(podcast_info['podcast_guest']['name'])
