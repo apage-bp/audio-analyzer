@@ -82,11 +82,16 @@ def display_podcast_info(podcast_info):
     st.subheader("Episode Title")
     st.write(podcast_info['podcast_details']['episode_title'])
 
+   # Use regex to remove the guest details from the podcast_summary
+    cleaned_summary = re.sub(r'GUEST NAME: .*?GUEST TITLE: .*?\n\n', '', podcast_infoo['podcast_details']['podcast_summary'])
+    log.info(cleaned_summary)
+    
     # Display the podcast summary and the cover image in a side-by-side layout
     col1, col2 = st.columns([7, 3])
     with col1:
         st.subheader("Podcast Episode Summary")
-        st.write(podcast_info['podcast_summary'])
+        st.write(cleaned_summary)  # Use the cleaned summary
+    
     with col2:
         st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
 
