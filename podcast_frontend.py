@@ -8,24 +8,36 @@ def main():
     st.markdown("""
         <style>
             body {
-                background-color: #f4f4f4;
+                background: linear-gradient(45deg, #f3ec78, #af4261);
+                font-family: 'Arial', sans-serif;
             }
             h1, h2, h3 {
-                color: #333;
+                color: #ffffff;
             }
             .stButton>button {
-                background-color: #007BFF;
+                background-color: #8e44ad;
                 color: white;
                 border: none;
-                border-radius: 5px;
-                padding: 10px 20px;
+                border-radius: 20px;
+                padding: 10px 25px;
                 font-size: 1em;
+                box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
             }
             .stButton>button:hover {
-                background-color: #0056b3;
+                background-color: #682773;
             }
             .stMarkdown p {
                 margin-bottom: 15px;
+                color: #ffffff;
+            }
+            .stSidebar {
+                background-color: #ffffff;
+                border-radius: 0 15px 15px 0;
+            }
+            .stTextInput input[type="text"] {
+                padding: 10px 15px;
+                border-radius: 15px;
+                border: 2px solid #8e44ad;
             }
         </style>
     """, unsafe_allow_html=True)
