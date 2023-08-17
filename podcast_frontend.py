@@ -101,12 +101,15 @@ def display_podcast_info(podcast_info):
         st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
 
     # Display the podcast guest and their details in a side-by-side layout
-    col3, col4 = st.columns([3, 7])
+    header_text = "Podcast Guest" if podcast_info['podcast_details']['episode_title'] != 'Host' else "Podcast Host"
+    details_header_text = header_text + " Details"
+    
     with col3:
-        st.subheader("Podcast Guest")
+        st.subheader(header_text)
         st.write(podcast_info['podcast_guest']['name'])
+    
     with col4:
-        st.subheader("Podcast Guest Details")
+        st.subheader(details_header_text)
         st.write(podcast_info["podcast_guest"]['summary'])
 
     # Display the five key moments
