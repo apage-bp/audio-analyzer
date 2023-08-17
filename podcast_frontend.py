@@ -2,6 +2,7 @@ import streamlit as st
 import modal
 import json
 import os
+import re
 
 def main():
     st.title("Newsletter Dashboard")
@@ -39,24 +40,31 @@ def main():
 
         # Display the podcast summary and the cover image in a side-by-side layout
         col1, col2 = st.columns([7, 3])
-
         with col1:
-            # Display the podcast episode summary
             st.subheader("Podcast Episode Summary")
-            st.write(podcast_info['podcast_summary'])
-
+            
+            # Use regex to split the podcast_summary based on the pattern
+            summary_parts = re.split(r'GUEST TITLE: .*?\n\n', podcast_info['podcast_summary'], maxsplit=1)
+            if len(summary_parts) > 1:
+                st.write(summary_parts[1])
+            else:
+                st.write(podcast_info['podcast_summary'])  # If there's no split, just display the entire summary
+        
         with col2:
             st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
-
+            
         # Display the podcast guest and their details in a side-by-side layout
         col3, col4 = st.columns([3, 7])
 
+        header_text = "Podcast Guest" if podcast_info['podcast_details']['episode_title'] != 'Host' else "Podcast Host"
+        details_header_text = header_text + " Details"
+        
         with col3:
-            st.subheader("Podcast Guest")
+            st.subheader(header_text)
             st.write(podcast_info['podcast_guest']['name'])
-
+        
         with col4:
-            st.subheader("Podcast Guest Details")
+            st.subheader(details_header_text)
             st.write(podcast_info["podcast_guest"]['summary'])
 
         # Display the five key moments
