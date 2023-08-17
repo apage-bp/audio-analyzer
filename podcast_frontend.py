@@ -82,7 +82,8 @@ def display_podcast_info(podcast_info):
     st.subheader("Episode Title")
     st.write(podcast_info['podcast_details']['episode_title'])
 
-   # Use regex to remove the guest details from the podcast_summary
+    # Use regex to remove the guest details from the podcast_summary
+    log.info(podcast_info)
     cleaned_summary = re.sub(r'GUEST NAME: .*?GUEST TITLE: .*?\n\n', '', podcast_info['podcast_details']['podcast_summary'])
     log.info(cleaned_summary)
     
