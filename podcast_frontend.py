@@ -44,7 +44,7 @@ def main():
             st.subheader("Podcast Episode Summary")
             
             # Use regex to split the podcast_summary based on the pattern
-            summary_parts = re.split(r'GUEST TITLE: [A-Za-z]+', podcast_info['podcast_summary'], maxsplit=1)
+            summary_parts = re.split(r'.*GUEST TITLE: [A-Za-z]+', podcast_info['podcast_summary'], maxsplit=1)
             if len(summary_parts) > 1:
                 st.write(summary_parts[1])
             else:
