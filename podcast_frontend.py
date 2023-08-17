@@ -4,6 +4,32 @@ import json
 import os
 
 def main():
+    # CSS Styles
+    st.markdown("""
+        <style>
+            body {
+                background-color: #f4f4f4;
+            }
+            h1, h2, h3 {
+                color: #333;
+            }
+            .stButton>button {
+                background-color: #007BFF;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+            .stButton>button:hover {
+                background-color: #0056b3;
+            }
+            .stMarkdown p {
+                margin-bottom: 15px;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
     st.title("Newsletter Dashboard")
 
     available_podcast_info = create_dict_from_json_files('.')
@@ -16,49 +42,12 @@ def main():
     selected_podcast = st.sidebar.selectbox("Select Podcast", options=available_podcast_info.keys())
 
     if selected_podcast:
-
         podcast_info = available_podcast_info[selected_podcast]
-
-        # Right section - Newsletter content
-        st.header("Newsletter Content")
-
-        # Display the podcast title
-        st.subheader("Episode Title")
-        st.write(podcast_info['podcast_details']['episode_title'])
-
-        # Display the podcast summary and the cover image in a side-by-side layout
-        col1, col2 = st.columns([7, 3])
-
-        with col1:
-            # Display the podcast episode summary
-            st.subheader("Podcast Episode Summary")
-            st.write(podcast_info['podcast_summary'])
-
-        with col2:
-            st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
-
-        # Display the podcast guest and their details in a side-by-side layout
-        col3, col4 = st.columns([3, 7])
-
-        with col3:
-            st.subheader("Podcast Guest")
-            st.write(podcast_info['podcast_guest']['name'])
-
-        with col4:
-            st.subheader("Podcast Guest Details")
-            st.write(podcast_info["podcast_guest"]['summary'])
-
-        # Display the five key moments
-        st.subheader("Key Moments")
-        key_moments = podcast_info['podcast_highlights']
-        for moment in key_moments.split('\n'):
-            st.markdown(
-                f"<p style='margin-bottom: 5px;'>{moment}</p>", unsafe_allow_html=True)
-
+        display_podcast_info(podcast_info)
+    
     # User Input box
     st.sidebar.subheader("Add and Process New Podcast Feed")
     url = st.sidebar.text_input("Link to RSS Feed")
-
     process_button = st.sidebar.button("Process Podcast Feed")
     st.sidebar.markdown("**Note**: Podcast processing can take upto 5 mins, please be patient.")
 
@@ -102,6 +91,36 @@ def main():
         for moment in key_moments.split('\n'):
             st.markdown(
                 f"<p style='margin-bottom: 5px;'>{moment}</p>", unsafe_allow_html=True)
+
+def display_podcast_info(podcast_info):
+    # Right section - Newsletter content
+    st.header("Newsletter Content")
+    st.subheader("Episode Title")
+    st.write(podcast_info['podcast_details']['episode_title'])
+
+    # Display the podcast summary and the cover image in a side-by-side layout
+    col1, col2 = st.columns([7, 3])
+    with col1:
+        st.subheader("Podcast Episode Summary")
+        st.write(podcast_info['podcast_summary'])
+    with col2:
+        st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
+
+    # Display the podcast guest and their details in a side-by-side layout
+    col3, col4 = st.columns([3, 7])
+    with col3:
+        st.subheader("Podcast Guest")
+        st.write(podcast_info['podcast_guest']['name'])
+    with col4:
+        st.subheader("Podcast Guest Details")
+        st.write(podcast_info["podcast_guest"]['summary'])
+
+    # Display the five key moments
+    st.subheader("Key Moments")
+    key_moments = podcast_info['podcast_highlights']
+    for moment in key_moments.split('\n'):
+        st.markdown(
+            f"<p style='margin-bottom: 5px;'>{moment}</p>", unsafe_allow_html=True)
 
 def create_dict_from_json_files(folder_path):
     json_files = [f for f in os.listdir(folder_path) if f.endswith('.json')]
