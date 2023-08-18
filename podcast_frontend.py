@@ -30,8 +30,8 @@ def main():
 
 def display_podcast_info(podcast_info):
     st.header("Newsletter Content")
-    st.subheader("Episode Title")
-    st.write(podcast_info['podcast_details']['episode_title'])
+    st.caption("Episode Title")
+    st.header(podcast_info['podcast_details']['episode_title'])
     st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
 
     # Use regex to remove the guest details from the podcast_summary
