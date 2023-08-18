@@ -31,7 +31,7 @@ def main():
         display_podcast_info(podcast_info)
 
 def display_podcast_info(podcast_info):
-    st.header("Newsletter Content")
+    st.header("🎙️ Newsletter Content")
     st.divider()
     #st.subheader("Episode Title")
     #st.write("Episode Title")
