@@ -35,6 +35,7 @@ def display_podcast_info(podcast_info):
     st.divider()
     #st.subheader("Episode Title")
     #st.write("Episode Title")
+    st.subheader("Podcast: "+podcast_info['podcast_details']['podcast_title'])
     st.subheader("Episode: "+podcast_info['podcast_details']['episode_title'])
     st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
 
