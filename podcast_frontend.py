@@ -32,18 +32,14 @@ def display_podcast_info(podcast_info):
     st.header("Newsletter Content")
     st.subheader("Episode Title")
     st.write(podcast_info['podcast_details']['episode_title'])
+    st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
 
     # Use regex to remove the guest details from the podcast_summary
     match = re.search(r'GUEST TITLE: .*?\n\n(.*)', podcast_info['podcast_summary'], flags=re.DOTALL)
     cleaned_summary = match.group(1) if match else podcast_info['podcast_summary']
 
-    # Display the podcast summary and the cover image in a side-by-side layout
-    col1, col2 = st.columns([10, 3])
-    with col1:
-        st.subheader("Podcast Episode Summary")
-        st.write(cleaned_summary)
-    with col2:
-        st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
+    st.subheader("Podcast Episode Summary")
+    st.write(cleaned_summary)  
 
     # Display the podcast guest and their details in a side-by-side layout
     header_text = "Podcast Guest" if podcast_info['podcast_details']['episode_title'] != 'Host' else "Podcast Host"
