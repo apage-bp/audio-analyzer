@@ -60,7 +60,7 @@ def display_podcast_info(podcast_info):
             st.subheader(details_header_text)
             st.write(podcast_info["podcast_guest"]['summary'])
         # Check if "profile_picture" exists and seems like a URL
-        profile_picture = podcast_info['podcast_guest']['profile_picture']
+        profile_picture = podcast_info['podcast_guest'].get('profile_picture')
         if profile_picture and (profile_picture.startswith('http://') or profile_picture.startswith('https://')):
             st.image(profile_picture, caption="Podcast Guest Image", width=300, use_column_width=True)
 
