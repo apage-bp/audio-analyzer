@@ -42,6 +42,8 @@ def display_podcast_info(podcast_info):
     match = re.search(r'GUEST TITLE: .*?\n\n(.*)', podcast_info['podcast_summary'], flags=re.DOTALL)
     cleaned_summary = match.group(1) if match else podcast_info['podcast_summary']
 
+    tab1, tab2, tab3 = st.tabs(["Summary", "Guest Details", "Key Moments"])
+
     st.subheader("Podcast Episode Summary")
     st.write(cleaned_summary)  
 
