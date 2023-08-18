@@ -7,7 +7,7 @@ import re
 def main():
     #st.set_page_config(layout="wide")
     
-    st.title("Newsletter Dashboard")
+    st.title("🎙️ Newsletter Dashboard")
     available_podcast_info = create_dict_from_json_files('.')
 
     # Left section - Input fields
@@ -35,7 +35,7 @@ def display_podcast_info(podcast_info):
     st.divider()
     #st.subheader("Episode Title")
     #st.write("Episode Title")
-    st.subheader("🎙️ Episode: "+podcast_info['podcast_details']['episode_title'])
+    st.subheader("Episode: "+podcast_info['podcast_details']['episode_title'])
     st.image(podcast_info['podcast_details']['episode_image'], caption="Podcast Cover", width=300, use_column_width=True)
 
     # Use regex to remove the guest details from the podcast_summary
