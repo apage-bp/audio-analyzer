@@ -66,7 +66,7 @@ def display_podcast_info(podcast_info):
 
     with tab3:
         # Display the five key moments
-        st.subheader("Key Moments")
+        st.subheader("Key Moments, Insights, and Perspectives")
         key_moments = podcast_info['podcast_highlights']
         for moment in key_moments.split('\n'):
             st.markdown(f"<p style='margin-bottom: 5px;'>{moment}</p>", unsafe_allow_html=True)
