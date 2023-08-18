@@ -44,25 +44,28 @@ def display_podcast_info(podcast_info):
 
     tab1, tab2, tab3 = st.tabs(["Summary", "Guest Details", "Key Moments"])
 
-    st.subheader("Podcast Episode Summary")
-    st.write(cleaned_summary)  
+    with tab1:
+        st.subheader("Podcast Episode Summary")
+        st.write(cleaned_summary)  
 
-    # Display the podcast guest and their details in a side-by-side layout
-    header_text = "Podcast Guest" if podcast_info['podcast_details']['episode_title'] != 'Host' else "Podcast Host"
-    details_header_text = header_text + " Details"
-    col3, col4 = st.columns([3, 7])
-    with col3:
-        st.subheader(header_text)
-        st.write(podcast_info['podcast_guest']['name'])
-    with col4:
-        st.subheader(details_header_text)
-        st.write(podcast_info["podcast_guest"]['summary'])
+    with tab2:
+        # Display the podcast guest and their details in a side-by-side layout
+        header_text = "Podcast Guest" if podcast_info['podcast_details']['episode_title'] != 'Host' else "Podcast Host"
+        details_header_text = header_text + " Details"
+        col3, col4 = st.columns([3, 7])
+        with col3:
+            st.subheader(header_text)
+            st.write(podcast_info['podcast_guest']['name'])
+        with col4:
+            st.subheader(details_header_text)
+            st.write(podcast_info["podcast_guest"]['summary'])
 
-    # Display the five key moments
-    st.subheader("Key Moments")
-    key_moments = podcast_info['podcast_highlights']
-    for moment in key_moments.split('\n'):
-        st.markdown(f"<p style='margin-bottom: 5px;'>{moment}</p>", unsafe_allow_html=True)
+    with tab3:
+        # Display the five key moments
+        st.subheader("Key Moments")
+        key_moments = podcast_info['podcast_highlights']
+        for moment in key_moments.split('\n'):
+            st.markdown(f"<p style='margin-bottom: 5px;'>{moment}</p>", unsafe_allow_html=True)
 
 def create_dict_from_json_files(folder_path):
     json_files = [f for f in os.listdir(folder_path) if f.endswith('.json')]
