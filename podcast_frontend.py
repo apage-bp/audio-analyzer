@@ -38,7 +38,7 @@ def display_podcast_info(podcast_info):
     cleaned_summary = match.group(1) if match else podcast_info['podcast_summary']
 
     # Display the podcast summary and the cover image in a side-by-side layout
-    col1, col2 = st.columns([7, 3])
+    col1, col2 = st.columns([10, 3])
     with col1:
         st.subheader("Podcast Episode Summary")
         st.write(cleaned_summary)
