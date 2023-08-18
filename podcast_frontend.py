@@ -5,7 +5,7 @@ import os
 import re
 
 def main():
-    st.set_page_config(layout="wide")
+    //st.set_page_config(layout="wide")
     
     st.title("Newsletter Dashboard")
     available_podcast_info = create_dict_from_json_files('.')
